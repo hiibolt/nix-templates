@@ -21,3 +21,4 @@ run:
 
 clean:
 	rm -f *.o $(ENTRYPOINT)
+	rm -f $(OUTPUT_NAME)
