@@ -12,16 +12,12 @@
         };
       in
       {
-        packages = {
-          default = pkgs.callPackage ./my-package.nix {};
-        };
-        devShells.x86_64-linux.default = with pkgs; mkShell {
-          buildInputs = [ cargo rustc rustfmt rust-analyzer clippy ];
+        devShell = pkgs.mkShell {
+          buildInputs = with pkgs; [ cargo rustc rustfmt rust-analyzer clippy ];
           shellHook = 
             ''
-            source enviro/bin/activate
             '';
-          RUST_SRC_PATH = rustPlatform.rustLibSrc;
+          RUST_SRC_PATH = pkgs.rustPlatform.rustLibSrc;
         };
     });
 }
