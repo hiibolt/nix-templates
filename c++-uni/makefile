@@ -4,13 +4,14 @@
 #
 
 CXX = g++
-CXXFLAGS = -Wall -Werror -ansi -pedantic -std=c++14 -g
+CXXFLAGS = -Wall -Werror -ansi -pedantic -std=c++14 -g 
 OUTPUT_NAME = result
-ENTRYPOINT = labtrain.cpp
-SRCS = labtrain.cpp student.cpp
+ENTRYPOINT = labtrain
 
-$(ENTRYPOINT:.cpp=): $(SRCS:.cpp=.o)
-	$(CXX) $(CXXFLAGS) -o $(OUTPUT_NAME) $(SRCS:.cpp=.o)
+$(ENTRYPOINT): $(ENTRYPOINT).o
+	$(CXX) $(CXXFLAGS) -o $(OUTPUT_NAME) $(ENTRYPOINT).o
+
+$(ENTRYPOINT).o: $(ENTRYPOINT).cpp
 
 debug:
 	gdb --silent $(OUTPUT_NAME)
