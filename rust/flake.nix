@@ -67,7 +67,7 @@
       {
         defaultPackage = localRustBuild;
 
-        devShell = pkgs.mkShell {
+        packages.cargo_setup = pkgs.mkShell {
           buildInputs = with pkgs; [ cargo rustc ];
         };
     });
